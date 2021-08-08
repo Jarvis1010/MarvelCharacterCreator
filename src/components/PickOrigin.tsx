@@ -1,4 +1,3 @@
-/* eslint-disable no-unexpected-multiline */
 import * as React from "react";
 import { PadBox } from "@bedrock-layout/padbox";
 import { InlineCluster } from "@bedrock-layout/inline-cluster";
@@ -9,11 +8,11 @@ import styled from "styled-components";
 import { VisuallyHidden } from "@reach/visually-hidden";
 export type Origin = "ALTERED_HUMAN" | "MUTANT" | "HI_TECH" | "ROBOT" | "ALIEN";
 
-const RadioBox = styled(PadBox).attrs<{
+type RadioBoxProps = {
   $checked?: boolean;
-}>(() => ({ as: "label", padding: "lg" }))<{
-  $checked?: boolean;
-}>`
+};
+
+const RadioBox = styled(PadBox)<RadioBoxProps>`
   cursor: pointer;
   background-color: ${(props) => (props.$checked ? "lightgrey" : "white")};
   border-radius: var(--border-radius-rounded-lg);
@@ -28,7 +27,7 @@ const InputRadio: React.FC<
   { label: string; value: Origin } & React.ComponentPropsWithoutRef<"input">
 > = ({ label, value, ...props }) => {
   return (
-    <RadioBox $checked={props.checked}>
+    <RadioBox as="label" padding="lg" $checked={props.checked}>
       {label}
       <VisuallyHidden
         as="input"
