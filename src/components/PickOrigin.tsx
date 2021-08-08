@@ -1,7 +1,7 @@
 import * as React from "react";
 import { PadBox } from "@bedrock-layout/padbox";
 import { InlineCluster } from "@bedrock-layout/inline-cluster";
-import { rollDice } from "../src/utils";
+import { rollDice } from "../utils";
 
 import styled from "styled-components";
 
