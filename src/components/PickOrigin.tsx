@@ -1,3 +1,4 @@
+/* eslint-disable no-unexpected-multiline */
 import * as React from "react";
 import { PadBox } from "@bedrock-layout/padbox";
 import { InlineCluster } from "@bedrock-layout/inline-cluster";
@@ -8,7 +9,9 @@ import styled from "styled-components";
 import { VisuallyHidden } from "@reach/visually-hidden";
 export type Origin = "ALTERED_HUMAN" | "MUTANT" | "HI_TECH" | "ROBOT" | "ALIEN";
 
-const RadioBox = styled(PadBox).attrs(() => ({ as: "label", padding: "lg" }))<{
+const RadioBox = styled(PadBox).attrs<{
+  $checked?: boolean;
+}>(() => ({ as: "label", padding: "lg" }))<{
   $checked?: boolean;
 }>`
   cursor: pointer;
