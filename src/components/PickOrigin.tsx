@@ -67,17 +67,20 @@ function setRandomOrigin(): Origin {
       return "ROBOT";
     case roll > 95:
       return "ALIEN";
+    default:
+      throw new Error("incorrect roll");
   }
 }
 
-export function PickOrigin(): React.ReactNode {
+export const PickOrigin: React.FC = () => {
   const [origin, setOrigin] = React.useState("");
   return (
     <PadBox
       as="form"
       padding="lgXl"
-      onChange={({ target: { value } }) => {
-        setOrigin(value);
+      onChange={(e: React.FormEvent<HTMLFormElement>) => {
+        //@ts-ignore
+        setOrigin(e.target.value);
       }}
     >
       <OriginGroup gutter="md">
@@ -106,4 +109,4 @@ export function PickOrigin(): React.ReactNode {
       <div></div>
     </PadBox>
   );
-}
+};
