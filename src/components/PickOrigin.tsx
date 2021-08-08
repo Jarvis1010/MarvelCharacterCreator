@@ -5,7 +5,6 @@ import { rollDice } from "../utils";
 
 import styled from "styled-components";
 
-import { VisuallyHidden } from "@reach/visually-hidden";
 export type Origin = "ALTERED_HUMAN" | "MUTANT" | "HI_TECH" | "ROBOT" | "ALIEN";
 
 type RadioBoxProps = {
@@ -29,13 +28,27 @@ const InputRadio: React.FC<
   return (
     <RadioBox as="label" padding="lg" $checked={props.checked}>
       {label}
-      <VisuallyHidden
-        as="input"
+      <input
         onChange={() => void 0}
         {...props}
         value={value}
         type="radio"
         name="origin"
+        style={{
+          border: 0,
+          clip: "rect(0 0 0 0)",
+          height: "1px",
+          margin: "-1px",
+          overflow: "hidden",
+          padding: 0,
+          position: "absolute",
+          width: "1px",
+
+          // https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+          whiteSpace: "nowrap",
+          wordWrap: "normal",
+          ...props.style
+        }}
       />
     </RadioBox>
   );
